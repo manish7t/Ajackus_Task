@@ -20,4 +20,4 @@ command: python manage.py migrate
 command: python manage.py seed
 command: python manage.py runserver
 
-**Note: Admin users and City,State,Country are created using seeding**
+**Note: Admin users and City,State,Country are created using seeding**.
