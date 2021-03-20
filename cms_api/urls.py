@@ -8,7 +8,7 @@ urlpatterns = [
     re_path(r'^login/', views.UserLogin.as_view()),  # POST
 
     # Content CRUD Opration
-    re_path(r'^git initgit init/', views.CreateContent.as_view()),  # POST
+    re_path(r'^create-content/', views.CreateContent.as_view()),  # POST
     re_path(r'^retrieve-content/(?P<pk>\d+)/', views.RetrieveContent.as_view()),  # GET
     re_path(r'^update-content/(?P<pk>\d+)/', views.UpdateContent.as_view()),  # POST
     re_path(r'^delete-content/(?P<pk>\d+)/', views.DeleteContent.as_view()),  # GET
