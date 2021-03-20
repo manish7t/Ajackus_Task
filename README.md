@@ -1,15 +1,13 @@
-# ajackus_task
+Requirements:
 
-**Requirements:**
-1.Python3.7+ 
+1.Python3.7+
 2.Django
-3.DRF 
-4.djangorestframework-simplejwt 
-5.django-taggit 
+3.DRF 4.
+djangorestframework-simplejwt
+5.django-taggit
 6.django-taggit-serializer
 
-**Instructions**
-
+Instructions
 Download this repository.
 Navigate to Project directory(cd Ajackus_Task/Ajackus_Assignment/)
 Make sure you have Python3.7+ installed.
@@ -20,4 +18,4 @@ command: python manage.py migrate
 command: python manage.py seed
 command: python manage.py runserver
 
-**Note: Admin users and City,State,Country are created using seeding**.
+Note: Admin users and City,State,Country are created using seeding
