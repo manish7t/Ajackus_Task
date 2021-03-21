@@ -23,13 +23,13 @@ class UserRegistrationSerializer(ModelSerializer):
         pincode = data.get("pincode")
 
         if re.search("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$", password) is None:
-            raise ValidationError('password length must be 8 and must contain1 uppercase 1 lowercase character')
+            raise ValidationError('password length must be 8 and must contain1 uppercase ,1 lowercase character,1 number')
 
         if len(str(phone)) != 10:
             raise ValidationError('Invalid Phone Number !! please check again')
 
         if len(str(pincode)) != 6:
-            raise ValidationError('Invalid Pincode Number !! please check again')
+            raise ValidationError('Invalid Pincode !! please check again')
 
         return data
 
