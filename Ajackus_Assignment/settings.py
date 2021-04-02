@@ -25,7 +25,7 @@ SECRET_KEY = '7)@s3p69r1%$wo@&%ynn0=83o9j9a(b6ai!)0j7=l^nynyc_5v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -113,7 +113,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 2
+    'PAGE_SIZE': 5
 }
 
 # Authentication Setup / JWT

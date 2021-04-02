@@ -8,6 +8,6 @@ def search_contant(**kwargs):
     content_list = Content.objects.filter(Q(title__icontains=search_keyword) |
                                           Q(body__icontains=search_keyword) |
                                           Q(summary__icontains=search_keyword) |
-                                          Q(categories__name__icontains=search_keyword))
+                                          Q(categories__name__icontains=search_keyword)).distinct()
 
     return content_list

@@ -44,7 +44,6 @@ class UserRegistration(APIView):
 @permission_classes([AllowAny])
 class UserLogin(APIView):
     serializer_class = UserLoginSerializer
-    permission_classes = [AllowAny]
 
     def post(self, request):
         data = request.data
@@ -68,6 +67,7 @@ class UserLogin(APIView):
 @permission_classes([IsAuthenticated])
 class CreateContent(mixins.CreateModelMixin, GenericAPIView):
     serializer_class = ContentSerializer
+    queryset = Content.objects.all()
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
@@ -85,11 +85,11 @@ class CreateContent(mixins.CreateModelMixin, GenericAPIView):
 @permission_classes([IsAuthenticated])
 class GetAllContentAPI(ListModelMixin, GenericAPIView):
     queryset = Content.objects.all()
-    pagination_class = api_settings.DEFAULT_PAGINATION_CLASS
+    # pagination_class = api_settings.DEFAULT_PAGINATION_CLASS
     serializer_class = ListContentSerializer
 
     def get(self, request, *args, **kwargs):
-        return paginator.get_paginated_response({'status': 200, 'data': self.list(request, *args, *kwargs).data})
+        return Response({'status': 200, 'data': self.list(request, *args, *kwargs).data})
 
 
 # GET Individual Content API
@@ -113,7 +113,7 @@ class RetrieveContent(RetrieveModelMixin, GenericAPIView):
 # Update Individual Content API
 @permission_classes([IsAuthenticated])
 class UpdateContent(UpdateModelMixin, GenericAPIView):
-    serializer_class = ContentSerializer
+    serializer_class = UpdateContentSerializer
     queryset = Content.objects.all()
 
     def perform_update(self, serializer):
@@ -130,7 +130,8 @@ class UpdateContent(UpdateModelMixin, GenericAPIView):
 
 
 # Delete Content API
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 class DeleteContent(DestroyModelMixin, GenericAPIView):
     serializer_class = ContentSerializer
     queryset = Content.objects.all()
@@ -168,3 +169,15 @@ class SearchContent(APIView):
             return Response({'data': serializer.data})
 
         return Response({'status': '400', 'error': 'No Records To Display'})
+
+
+@permission_classes([AllowAny])
+class Test(APIView):
+    serializer_class = StateSerializer
+
+    def get(self, request):
+        data = State.objects.all()[0:3]
+
+        serializer = StateSerializer(data, many=True)
+
+        return Response({'data': serializer.data})
